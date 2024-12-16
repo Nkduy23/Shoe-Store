@@ -1,0 +1,18 @@
+.pointer {
+    cursor: pointer;
+}
+
+.icon-16 {
+    @extend .pointer;
+    font-size: 16px;
+}
+
+.icon-18 {
+    @extend .pointer;
+    font-size: 18px;
+}
+
+.icon-25 {
+    @extend .pointer;
+    font-size: 25px;
+}
