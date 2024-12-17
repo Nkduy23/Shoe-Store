@@ -1,5 +1,10 @@
 // `lg` applies to medium devices (tablets, less than 992px)
 @media (max-width: 991.98px) {
+  // font size
+  html {
+    font-size: 55%;
+  }
+
   // common
   input[type="checkbox"]#menu-mobile:checked ~ .header__overlay-menu,
   input[type="checkbox"]#search-box:checked ~ .header__overlay-search {
@@ -11,7 +16,7 @@
     z-index: 100;
   }
 
-  .header__container-mb,
+  .header__container-mb-menu,
   .header__container-search {
     visibility: visible;
     transform: translateX(-100%);
@@ -32,7 +37,7 @@
     }
   }
 
-  input[type="checkbox"]#menu-mobile:checked ~ .header__container-mb,
+  input[type="checkbox"]#menu-mobile:checked ~ .header__container-mb-menu,
   input[type="checkbox"]#search-box:checked ~ .header__container-search {
     transform: translateX(0);
   }
@@ -41,7 +46,7 @@
     display: block;
   }
 
-  // header PC
+  // header pc
   .header__pc {
     .header__nav {
       display: none;
@@ -55,9 +60,12 @@
       display: block;
     }
   }
-  // header MB
-  .header__mb {
+
+  // header mb menu
+  .header__mb-menu {
     text-transform: uppercase;
+    opacity: 1;
+
     .header__nav {
       margin: 1rem 0 2rem;
     }
@@ -123,32 +131,43 @@
       color: #000000ce;
     }
   }
-  // header search
-  .header__search {
-    display: inline-block;
-    text-align: center;
-    position: relative;
-    width: 80%;
-    margin: 10rem 0;
+
+  // header mb search
+  .header__mb-search {
     .header__container-search {
       transform: translateX(100%);
       left: unset;
       right: 0;
       top: 0;
       bottom: 0;
+      .close {
+        top: 1.5rem;
+        right: 1.5rem;
+        font-size: 2rem;
+      }
+    }
+
+    .header__search {
+      width: 100%;
+      padding-top: 100px;
+      display: flex;
+      justify-content: center;
     }
 
     .header__search-input {
-      position: relative;
-      width: 100%;
-      padding: 1rem 0.5rem;
+      width: 30rem;
+      padding: 1rem;
+      background-color: #f7f7f7;
       border: none;
-      background-color: #f1f0f0;
     }
 
-    .header__search-icon {
+    .header__search-btn {
+      position: relative;
+    }
+
+    .header__search-icon{
       position: absolute;
-      top: 50%;
+      bottom: 0;
       right: 0;
       transform: translate(-50%, -50%);
     }

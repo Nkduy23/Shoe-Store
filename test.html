@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Slider</title>
+    <style>
+      /* Slider Container */
+      .slider-container {
+        position: relative;
+        width: 80%;
+        max-width: 800px;
+        margin: 50px auto;
+        overflow: hidden;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+      }
+
+      /* Slides */
+      .slider {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .slide {
+        min-width: 100%;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      img {
+        width: 100%;
+        display: block;
+      }
+
+      /* Navigation Buttons */
+      .prev-btn,
+      .next-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        z-index: 10;
+        font-size: 18px;
+        border-radius: 50%;
+      }
+
+      .prev-btn {
+        left: 10px;
+      }
+      .next-btn {
+        right: 10px;
+      }
+
+      .prev-btn:hover,
+      .next-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-container">
+      <button class="prev-btn">❮</button>
+      <div class="slider">
+        <img src="https://via.placeholder.com/800x400?text=Image+1" draggable="false" class="slide active" alt="Image 1" />
+        <img src="https://via.placeholder.com/800x400?text=Image+2" draggable="false" class="slide" alt="Image 2" />
+        <img src="https://via.placeholder.com/800x400?text=Image+3" draggable="false" class="slide" alt="Image 3" />
+      </div>
+      <button class="next-btn">❯</button>
+    </div>
+
+    <script>
+      const slider = document.querySelector(".slider");
+      const slides = document.querySelectorAll(".slide");
+      const prevBtn = document.querySelector(".prev-btn");
+      const nextBtn = document.querySelector(".next-btn");
+
+      let currentIndex = 0;
+      let startX, endX;
+
+      // Function để cập nhật slide
+      function updateSlide() {
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+
+      // Chuyển sang slide tiếp theo
+      function goToNextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlide();
+      }
+
+      // Chuyển về slide trước đó
+      function goToPrevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlide();
+      }
+
+      // Event click nút "Next" và "Prev"
+      nextBtn.addEventListener("click", goToNextSlide);
+      prevBtn.addEventListener("click", goToPrevSlide);
+
+      // Xử lý vuốt cho Mobile và PC
+      slider.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX; // Lấy tọa độ X bắt đầu
+      });
+
+      slider.addEventListener("touchend", (e) => {
+        endX = e.changedTouches[0].clientX; // Lấy tọa độ X khi kết thúc
+        handleSwipe();
+      });
+
+      slider.addEventListener("mousedown", (e) => {
+        startX = e.clientX; // Lấy tọa độ X bắt đầu khi nhấn chuột
+        slider.addEventListener("mousemove", onMouseMove);
+        slider.addEventListener("mouseup", onMouseUp);
+      });
+
+      // Xử lý vuốt trên PC
+      function onMouseMove(e) {
+        endX = e.clientX;
+      }
+
+      function onMouseUp() {
+        slider.removeEventListener("mousemove", onMouseMove);
+        slider.removeEventListener("mouseup", onMouseUp);
+        handleSwipe();
+      }
+
+      // Hàm xử lý vuốt (swipe)
+      function handleSwipe() {
+        const swipeDistance = startX - endX;
+
+        if (swipeDistance > 50) {
+          goToNextSlide(); // Vuốt sang trái: Next slide
+        } else if (swipeDistance < -50) {
+          goToPrevSlide(); // Vuốt sang phải: Prev slide
+        }
+      }
+    </script>
+  </body>
+</html>

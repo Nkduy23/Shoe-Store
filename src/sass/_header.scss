@@ -5,9 +5,10 @@ input[type="checkbox"] {
 
 .header__container-mb {
   visibility: hidden;
+  position: absolute;
 }
 
-// header PC
+// header pc
 .header__pc {
   text-transform: uppercase;
   position: sticky;
@@ -15,18 +16,21 @@ input[type="checkbox"] {
   padding-top: 10px;
   top: -10px;
   width: 100%;
+  background-color: #fff;
+  z-index: 100;
 
   .header__container {
     width: calc(100% - 48px);
     margin: 0 auto;
     z-index: 100;
     background-color: #fff;
-    height: 60px;
+    height: 6rem;
   }
 
   .header__logo a > img {
     width: 12rem;
   }
+
   .header__menu-item {
     position: relative;
     &:hover .header__menu-sub {
@@ -34,6 +38,7 @@ input[type="checkbox"] {
       transform: translateY(0);
     }
   }
+
   .header__menu-item::after {
     font-family: FontAwesome;
     content: "\f077";
@@ -88,10 +93,16 @@ input[type="checkbox"] {
   }
 
   .header__user {
-    width: 8rem;
+    width: 10rem;
   }
 
   .header__search-icon-mb {
     display: none;
   }
+}
+
+// header mb menu
+.header__mb-menu {
+  position: absolute;
+  opacity: 0;
 }

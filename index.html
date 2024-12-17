@@ -5,23 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tiệm Giày</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
     <link rel="stylesheet" href="./src/public/css/main.css" />
   </head>
   <body style="height: 5000px">
-    <!-- header PC -->
+    <!-- header pc -->
     <header class="header__pc container-center box-shadow">
       <div class="header__container container-evenly gap-1">
+        <!-- icon bars -->
         <label for="menu-mobile" class="header__icon-bars-label display-n">
           <div class="header__icon-bars">
             <i class="fa-solid fa-bars icon-25"></i>
           </div>
         </label>
+        <!-- logo -->
         <div class="header__logo">
           <a href="index.html"> <img src="./src/public/img/logo.png" alt="logo" /></a>
         </div>
+        <!-- nav -->
         <div class="header__nav">
           <nav>
             <ul class="header__menu container-center gap-mix flex-wrap">
@@ -130,29 +133,33 @@
             </ul>
           </nav>
         </div>
+        <!-- search -->
         <div class="header__search d-flex">
           <input type="text" class="header__search-input" placeholder="Search" />
           <i class="fa-solid fa-magnifying-glass header__search-icon icon-16"></i>
         </div>
-        <div class="header__user container-center flex-wrap-1">
+        <!-- header user -->
+        <div class="header__user container-center flex-wrap gap-mix">
           <label for="search-box"><i class="fa-solid fa-magnifying-glass header__search-icon-mb icon-16"></i></label>
           <i class="fa-solid fa-user icon-18"></i>
           <i class="fa-solid fa-cart-shopping icon-18"></i>
         </div>
       </div>
     </header>
-    <!-- header MB -->
-    <header class="header__mb">
+
+    <!-- header mb -->
+    <header class="header__mb-menu">
       <input type="checkbox" name="menu-mobile" id="menu-mobile" />
       <label class="header__overlay-menu" for="menu-mobile"></label>
-      <div class="header__container-mb box-shadow">
+      <div class="header__container-mb-menu box-shadow">
         <div class="header-menu-title d-flex justify-content-center">
           <p>Menu</p>
           <label for="menu-mobile"> <i class="fa-solid fa-xmark close"></i></label>
         </div>
+        <!-- clone menu -->
         <script>
           const headerNavPC = document.querySelector(".header__nav");
-          const headerNavMB = document.querySelector(".header__container-mb");
+          const headerNavMB = document.querySelector(".header__container-mb-menu");
           if (headerNavPC && headerNavMB) {
             const cloneMenu = headerNavPC.cloneNode(true);
             headerNavMB.appendChild(cloneMenu);
@@ -160,18 +167,37 @@
         </script>
       </div>
     </header>
-    <!-- header Search -->
-    <header class="header__search">
+
+    <!-- header search -->
+    <header class="header__mb-search">
       <input type="checkbox" name="search-box" id="search-box" />
       <label class="header__overlay-search" for="search-box"></label>
       <div class="header__container-search display-n box-shadow">
-        <label for="search-box"> <i class="fa-solid fa-xmark close"></i></label>
+        <label for="search-box"><i class="fa-solid fa-xmark close"></i></label>
         <div class="header__search">
           <input type="text" class="header__search-input" placeholder="Search" />
-          <i class="fa-solid fa-magnifying-glass header__search-icon icon-16"></i>
+          <div class="header__search-btn">
+            <i class="fa-solid fa-magnifying-glass header__search-icon icon-16"></i>
+          </div>
         </div>
       </div>
     </header>
+
+    <!-- slider -->
+    <div class="slider-container">
+      <button class="slider__prev">❮</button>
+      <div class="slider pointer-grabbing">
+        <img class="slider__image" src="./src/public/img/slider-pc-1.jpg" data-large="./src/public/img/slider-pc-1.jpg" data-small="./src/public/img/slider-mb-1.jpg" alt="Slider Image 1" draggable="false" />
+        <img class="slider__image" src="./src/public/img/slider-pc-2.jpg" data-large="./src/public/img/slider-pc-2.jpg" data-small="./src/public/img/slider-mb-2.jpg" alt="Slider Image 2" draggable="false" />
+        <img class="slider__image" src="./src/public/img/slider-pc-3.jpg" data-large="./src/public/img/slider-pc-3.jpg" data-small="./src/public/img/slider-mb-3.jpg" alt="Slider Image 3" draggable="false" />
+        <img class="slider__image" src="./src/public/img/slider-pc-1.jpg" data-large="./src/public/img/slider-pc-1.jpg" data-small="./src/public/img/slider-mb-1.jpg" alt="Slider Image 1" draggable="false" />
+        <img class="slider__image" src="./src/public/img/slider-pc-2.jpg" data-large="./src/public/img/slider-pc-2.jpg" data-small="./src/public/img/slider-mb-2.jpg" alt="Slider Image 2" draggable="false" />
+        <img class="slider__image" src="./src/public/img/slider-pc-3.jpg" data-large="./src/public/img/slider-pc-3.jpg" data-small="./src/public/img/slider-mb-3.jpg" alt="Slider Image 3" draggable="false" />
+      </div>
+      <button class="slider__next">❯</button>
+    </div>
+
     <script src="./src/public/js/menumb.js"></script>
+    <script src="./src/public/js/slider.js"></script>
   </body>
 </html>
